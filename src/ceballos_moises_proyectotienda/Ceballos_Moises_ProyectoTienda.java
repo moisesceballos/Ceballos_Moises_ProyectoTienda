@@ -94,6 +94,7 @@ public class Ceballos_Moises_ProyectoTienda {
             String nombreProducto1 = "Azucar", nombreProducto2 = "Avena", nombreProducto3 = "Trigo", nombreProducto4 = "Maiz";
 
             do { // Do de la Validacion de opcion valida en menu 
+
                 System.out.println("\n======== DIA: " + dia + " ========");
                 System.out.println("***Caja Registradora***");
                 System.out.println("1.Abrir Caja");
@@ -346,15 +347,16 @@ public class Ceballos_Moises_ProyectoTienda {
                                         } while (codigoVender != 1 && codigoVender != 2 && codigoVender != 3 && codigoVender != 4);
 
                                         do {
-                                            System.out.print("Desea comprar otro producto? 1.Si 2.No: ");
+                                            System.out.print("Desea comprar otro producto? 1.Si 2.No: "); //RECOMPRA
                                             seleccion_SiNo = sc.nextInt();
 
-                                            if (seleccion_SiNo != 1 && seleccion_SiNo != 2) {
+                                            if (seleccion_SiNo != 1 && seleccion_SiNo != 2) { //VALIDACION DE RECOMPRA
                                                 System.out.println("MENSAJE: INGRESE UNA OPCION VALIDA!");
                                             }
-                                        } while (seleccion_SiNo != 1 && seleccion_SiNo != 2);
+                                        } while (seleccion_SiNo != 1 && seleccion_SiNo != 2); //DO WHILE DE RECOMPRA
 
                                     } while (seleccion_SiNo == 1);
+                                    //FACTURAS
 
                                     System.out.println("\n====== FACTURACION ======");
 
@@ -758,7 +760,7 @@ public class Ceballos_Moises_ProyectoTienda {
                                         String texto_descuento = " %";
                                         double impuesto = 0.07;
                                         String texto_impuesto = "7%";
-
+                                        // CALCULO DE IMPUESTO/DESCUENTOS PREVIAMENTE EXPLICADOS
                                         if (subtotal_ventas_general > 5000) {
                                             descuento = subtotal_ventas_general * 0.1;
                                             total_ventas_neto = subtotal_ventas_general - descuento;
@@ -855,8 +857,8 @@ public class Ceballos_Moises_ProyectoTienda {
                                             System.out.print("\nIngrese el codigo del producto a comprar: ");
                                             codigoComprar = sc.nextInt();
 
-                                            switch (codigoComprar) {
-                                                case 1:
+                                            switch (codigoComprar) { // SWITCH DE CODIGOCOMPRAR 
+                                                case 1: //AZUCAR
                                                     cantidadKgAzucar = -1;
                                                     while (cantidadKgAzucar <= 0) {
                                                         System.out.println("Ingrese la cantidad de kilogramos que desea comprar: ");
@@ -894,7 +896,7 @@ public class Ceballos_Moises_ProyectoTienda {
                                                         break;
                                                     }
 
-                                                case 4:
+                                                case 4: //MAIZ
                                                     cantidadKgMaiz = -1;
 
                                                     while (cantidadKgMaiz <= 0) {
@@ -903,6 +905,7 @@ public class Ceballos_Moises_ProyectoTienda {
                                                     }
 
                                                     subtotal_comprasMaiz = cantidadKgMaiz * precioMaizC;
+                                                    //SALE FACTURA SI SE HACE LA COMPRA
                                                     if (dineroCaja >= subtotal_comprasMaiz) {
                                                         System.out.println("El subtotal de la compra es: L." + subtotal_comprasMaiz);
                                                         dineroCaja -= subtotal_comprasMaiz;
@@ -963,7 +966,7 @@ public class Ceballos_Moises_ProyectoTienda {
                                             codigoComprar = sc.nextInt();
 
                                             switch (codigoComprar) {
-                                                case 2:
+                                                case 2: //AVENA
                                                     cantidadKgAvena = -1;
                                                     while (cantidadKgAvena <= 0) {
                                                         System.out.print("Ingrese la cantidad en kilogramos que desea: ");
@@ -1002,7 +1005,7 @@ public class Ceballos_Moises_ProyectoTienda {
                                                         break;
                                                     }
 
-                                                case 3://trigo
+                                                case 3://TRIGO
                                                     cantidadKgTrigo = -1;
 
                                                     while (cantidadKgTrigo <= 0) {
@@ -1133,7 +1136,7 @@ public class Ceballos_Moises_ProyectoTienda {
                         System.out.println("\nMENSAJE: ABRIR CAJA PRIMERO");
                     }
 
-                } else if (menu_opcion == 4) { // REPORTES
+                } else if (menu_opcion == 4) { // REPORTES REPORTES REPORTES REPORTES
                     System.out.println("\n======================================");
                     System.out.println("          REPORTES DEL DIA " + dia);
                     System.out.println("======================================");
@@ -1180,8 +1183,10 @@ public class Ceballos_Moises_ProyectoTienda {
 
                     System.out.println("\nf. Producto mas vendido:");
                     String productoTop = "Ninguno";
+                    
                     int maxVentas = 0;
-                    if (veces_vendidasAzucar > maxVentas) {
+                    
+                    if (veces_vendidasAzucar > maxVentas) { //SACA EL MAXIMO DE VENTAS
                         maxVentas = veces_vendidasAzucar;
                     }
                     if (veces_vendidasAvena > maxVentas) {
@@ -1194,9 +1199,9 @@ public class Ceballos_Moises_ProyectoTienda {
                         maxVentas = veces_vendidasMaiz;
                     }
 
-                    // Verificar si hay productos vendidos
+                    // VERIFICA SI HAY PRODUCTOS VENDIDOS
                     if (maxVentas > 0) {
-                        // Contar cuántos productos tienen el máximo
+                        // CONTAR CUANTOS PRODUCTOS TRAE EL MAX
                         int contadorEmpates = 0;
                         if (veces_vendidasAzucar == maxVentas) {
                             contadorEmpates++;
@@ -1223,8 +1228,8 @@ public class Ceballos_Moises_ProyectoTienda {
                                 System.out.println("   Maiz (" + maxVentas + " kg)");
                             }
                         } else {
-                            // Hay empate
-                            System.out.println("   Empate entre:");
+                            // HAY EMPATES
+                            System.out.println("   Empate entre:"); //IFS PORQUE AMBAS CONDICIONES SE PUEDEN CUMPLIR
                             if (veces_vendidasAzucar == maxVentas) {
                                 System.out.println("   - Azucar (" + maxVentas + " kg)");
                             }
@@ -1242,9 +1247,9 @@ public class Ceballos_Moises_ProyectoTienda {
                         System.out.println("   No se han realizado ventas");
                     }
 
-                } else if (menu_opcion == 5) {
+                } else if (menu_opcion == 5) { //CIERRE DE CAJA
                     if (dineroCaja > 0) {
-                        System.out.println("\nOpcion Seleccionada: ***Cierre de Caja***"); //FALTA EL CIERRE DE CAJA
+                        System.out.println("\nOpcion Seleccionada: ***Cierre de Caja***"); 
 
                         System.out.println("\n======== DIA: " + dia + " ========");
                         System.out.println("Dinero En Caja: L." + String.format("%.2f", dineroCaja));
@@ -1286,8 +1291,9 @@ public class Ceballos_Moises_ProyectoTienda {
                         costoTotalTrigo = 0;
                         costoTotalMaiz = 0;
                         dia++;
+                        //VARIABLES REINICIADAS PARA ASEGURAR UNA BUENA EJERCUCION DEL CODIGO
 
-                        permitir_ventas = false;
+                        permitir_ventas = false; //BOLEANS IMPORTANTES PARA ITERACIONES DE DIAS
                         permitir_compras = false;
                     } else {
                         System.out.println("MENSAJE: NO TIENES DINERO EN CAJA");
